@@ -1,6 +1,7 @@
 import runWorld as rw
 import drawWorld as dw
 import pygame as pg
+from random import randint
 
 ################################################################
 
@@ -58,7 +59,7 @@ def updateDisplay(state):
 #
 # state -> state
 def updateState(state):
-    return((state[0]+state[1],state[1],state[2] + state[3],state[3]))
+    return((state[0] + state[1], state[1], state[2] + state[3], state[3]))
 
 ################################################################
 
@@ -88,14 +89,17 @@ def endState(state):
 def handleEvent(state, event):
     #print("Handling event: " + str(event))
     if (event.type == pg.MOUSEBUTTONDOWN):
-        if (state[1]) == 1:
-            newState = -1
-        else:
-            newState = 1
-        return((state[0],newState,state[2],state[3]))
+        newState = [randomSpeed(), randomSpeed()]
+        return((state[0], newState[0], state[2], newState[1]))
     else:
         return(state)
 
+def randomSpeed():
+    r = randint(-5,5)
+    if (r == 0):
+        r = randomSpeed()
+
+    return r
 ################################################################
 
 # World state will be single x coordinate at left edge of world
