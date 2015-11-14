@@ -67,7 +67,7 @@ def updateState(state):
 # that is, when pos is less then zero or greater than the screen width
 # state -> bool
 def endState(state):
-    if (state[0] > (width-100) or state[2] > (height-100) or state[0] < 0 or state[2] < 0):
+    if (state[0] > width or state[2] > height or state[0] < 0 or state[2] < 0):
         return True
     else:
         return False
@@ -104,7 +104,7 @@ def randomSpeed():
 # World state will be single x coordinate at left edge of world
 
 # The cat starts at the left, moving right
-initState = (0,1,height/2,1)
+initState = (randint(0,500),randint(1,5),randint(0,500),randint(1,5))
 
 # Run the simulation no faster than 60 frames per second
 frameRate = 60
